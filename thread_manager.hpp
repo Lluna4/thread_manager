@@ -25,7 +25,8 @@ class thread_man
 		void stop_thread(int index)
 		{
 			if (index < threads.size())
-				threads[index].request_stop();
+				threads[index].~jthread();
+			threads.erase(threads.begin() + index);
 		}
 	private:
 		std::vector<std::jthread> threads;
